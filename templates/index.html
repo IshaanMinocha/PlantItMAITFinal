@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Roboto+Slab&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/media/logo2.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono&display=swap');
     </style>
@@ -44,14 +45,14 @@
         <header>
             <div>
                 <a href="/index">
-                    {% load static %} <img id="logo" src="{% static "/media/logo.jpg" %}" alt="PLANTit">
+                    {% load static %} <img id="logo" src="{% static "/media/logo2.png" %}" alt="PLANTit">
                 </a>
             </div>
             <br>
             <nav>
 
                 <a class="navButton" href="/index">Home</a>
-                <a class="navButton" href="#strip3">SERVICES</a>
+                <a class="navButton" href="#strip3">SERVICES <strong class="downicon">&#10507;</strong> </a>
                 <a class="navButton" href="/plantfinder">PLANT A TREE</a>
                 <a class="navButton" href="#strip7">COMMUNITY</a>
                 <a class="navButton" href="#contactstrip">CONTACT</a>
@@ -68,10 +69,10 @@
 
     <div id="strip2">
         <div>
-            <div id="mainImage">
+            {% comment %} <div id="mainImage">
                 {% load static %} <img src="{% static "/media/plant1.jpg" %}" alt="img">
 
-            </div>
+            </div> {% endcomment %}
             <h1><strong id="mainHeading" class="text">PLANTit</strong>
             </h1>
             <h2 id="motto">
@@ -105,19 +106,19 @@
         <h2 class="stripSubHeading centred">Let's Get Started</h2>
         <div class="container">
             <div class="item"><a href=""></a>
-                {% load static %}<img class="fleximg" src="{% static "/media/custom (1).jpg" %}" alt="1">PLANTATION
+                {% load static %}<img class="fleximg" src="{% static "/media/plantationguide.png" %}" alt="1">PLANTATION
                 GUIDE
             </div>
             <div class="item">
-                {% load static %}<img class="fleximg" src="{% static "/media/custom (2).jpg" %}" alt="2">PLANT A TREE
+                {% load static %}<img class="fleximg" src="{% static "/media/plantlocation.png" %}" alt="2">PLANT A TREE
                 IN YOUR LOCATION
             </div>
             <div class="item">
-                {% load static %}<img class="fleximg" src="{% static "/media/custom (3).jpg" %}" alt="3">FIND THE RIGHT
+                {% load static %}<img class="fleximg" src="{% static "/media/rightplant.png" %}" alt="3">FIND THE RIGHT
                 PLANT
             </div>
             <div class="item">
-                {% load static %}<img class="fleximg" src="{% static "/media/custom (4).jpg" %}" alt="4">CHAT WITH
+                {% load static %}<img class="fleximg" src="{% static "/media/chatcommunity.png" %}" alt="4">CHAT WITH
                 COMMUNITY
             </div>
 
@@ -129,7 +130,7 @@
         <h1 class="stripHeading centred">
             PLANTATION GUIDE
         </h1>
-        <img src="timeline" alt="timeline">
+        {% load static %}<img id="timelineimg" src="{% static "/media/timeline.jpeg" %}" alt="timeline">
 
     </div>
 
@@ -138,7 +139,14 @@
         <h1 class="stripHeading centred">
             PLANT A TREE IN YOUR LOCATION
         </h1>
-        <div class="centred">
+        <section class="centred searchbar">
+            <form name="search" method="get" action="/searchlocation/">
+                {% csrf_token %}
+                <input type="search" placeholder="Search Location" name="query" id="search">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+        {% comment %} <div class="centred">
             <input class="searchbar" type="text" placeholder="Enter your Location">
             <div class="dropdown">
                 <button class="dropbtn">Location</button>
@@ -153,7 +161,7 @@
             <div>
                 <input id="inputbtnml" class="btn" type="submit" value="Search">
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
 
     <div id="strip6">
@@ -161,12 +169,19 @@
         <h1 class="stripHeading centred">
             FIND THE RIGHT PLANT
         </h1>
-        <div class="centred">
+        <section class="centred searchbar">
+            <form name="search" method="get" action="/searchplant/">
+                {% csrf_token %}
+                <input type="search" placeholder="Search Plant" name="query" id="searchplant">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+        {% comment %} <div class="centred">
             <input class="searchbar" type="text" placeholder="Enter your requirements">
             <div>
                 <input id="inputbtnml" class="btn" type="submit" value="Search">
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
     
 
@@ -262,7 +277,7 @@
 
             <a href="/index">
                 <div>
-                    {% load static %} <img id="logoDown" src="{% static "/media/logo.jpg" %}" alt="PLANTit">
+                    {% load static %} <img id="logoDown" src="{% static "/media/logo2.png" %}" alt="PLANTit">
                 </div>
                 <div>
                     <strong>PLANTit</strong>
@@ -340,8 +355,7 @@
         <br>
 
         <div>
-            Made with ❤️ and pure code by <a href="https://github.com/IshaanMinocha"> Ishaan Minocha</a> and team for
-            HackWithMait 3.0 hackathon. All Rights Reserved. <br>
+            Made with ❤️ and pure code by Team Tech-Analogy. All Rights Reserved. <br>
             Copyright &copy; 2022
         </div>
 
